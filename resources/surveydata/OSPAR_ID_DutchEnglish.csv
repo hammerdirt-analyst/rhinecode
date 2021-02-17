@@ -1,0 +1,113 @@
+﻿ID,Description,category,OSPAR_ID
+plastic_6_packringen,Six pack ring,PO soft,1
+plastic_tassen,Bag,PO soft,2
+plastic_kleine_plastic_tasjes,Small bag,PO soft,3
+plastic_drankflessen_groterdan_halveliter,Bottle (>= 0.5 L),PET,4.1
+plastic_drankflessen_kleinerdan_halveliter,Bottle (< 0.5 L),PET,4.2
+plastic_wikkels_van_drankflessen,Bottle label,PO soft,4.3
+plastic_verpakking_van_schoonmaakmiddelen,Cleaning product packaging,PO hard,5
+plastic_voedselverpakkingen_frietbakjes_etc,Food packaging,Polystyrene,6
+plastic_cosmeticaverpakkingen,Cosmetics packaging,PO hard,7
+plastic_motorolieverpakking_groterdan50cm,Motor oil packaging (>= 50 cm),PO hard,9
+plastic_jerrycans,Jerrycan,PO hard,10
+plastic_kratten,Crate,PO hard,13
+plastic_auto_onderdelen,Car parts,PO hard,14
+plastic_doppen_en_deksels,Caps and lids,Polystyrene,15
+plastic_aanstekers,Lighter,PO hard,16
+plastic_speelgoed,Toy,Polystyrene,20
+plastic_plastic_bekers_of_delen_daarvan,Cup,Polystyrene,21
+plastic_netzakken,Net bag,PO soft,24
+plastic_handschoenen_huishoudelijk,Cleaning glove,PO soft,25
+plastic_handschoenen_professioneel,Glove,PO soft,113
+plastic_touw_diameter_groterdan_1cm,Rope,PO soft,31
+plastic_touw_diameter_kleinerdan_1cm,Rope,PO soft,32
+plastic_sportvisspullen,Fish gear,PO soft,33
+plastic_breekstaafjes,Glowstick,PO hard,36
+plastic_emmers,Bucket,PO hard,38
+plastic_industrieel_verpakkingsmateriaal,Industrial packaging,PO soft,40
+plastic_helmen,Helmet,PO hard,42
+plastic_geweerpatronen,Gun rounds,PO hard,43
+plastic_schoenen,Shoe,PO hard,44
+plastic_plastic_stukjes_0_2_5cm_hard_plastic,Hard fragment (< 5 cm),PO hard,117.1
+plastic_plastic_stukjes_2_5_50cm_hard_plastic,Hard fragment  (>= 5 cm),PO hard,46.1
+plastic_plastic_stukjes_0_2_5cm_zacht_plastic,Soft fragment (<  5 cm),PO soft,117.2
+plastic_plastic_stukjes_2_5_50cm_zacht_plastic,Soft fragment (>= 5 cm),PO soft,46.2
+plastic_overig_plastic,Other plastic,Other plastic,48
+plastic_piepschuim_0_2_5cm,Foam fragment (< 5 cm),EPS,1172
+plastic_piepschuim_2_5_50cm,Foam fragment (>=5 cm),EPS,462
+plastic_piepschuim_voedselverpakkingen,Foam food packaging,EPS,6.1
+plastic_plastic_folies_groterdan_50cm,Foil (>= 50 cm),PO soft,47.1
+plastic_hard_plastic_groterdan_50cm,Hard other (>= 50 cm),PO hard,47.2
+plastic_rietjes,Straw,Polystyrene,22.1
+plastic_snoep_snack_chipsverpakking,Food wrapping,Multilayer,19
+plastic_piepschuim_groterdan_50cm,Foam (> 50 cm),EPS,472
+plastic_piepschuim_bekers,Foam cup,EPS,212
+plastic_bestek,Cutlery,Polystyrene,21
+plastic_biofilm_waterfiltertjes,Water filter,PO hard,481
+plastic_kitspuiten,Nozzle,PO hard,11
+plastic_kunststof_band_tiewraps,Cable tie,PO hard,39
+plastic_lolliestokjes,Stick,PO hard,19.1
+plastic_motorolieverpakking_kleinerdan50cm,Motor oil packaging (< 50 cm),PO hard,8
+plastic_vuilniszakken,Garbage bag,PO soft,2.1
+plastic_schrijfwaren,Pen,PO hard,17
+plastic_visdraad,Fishing wire,PO soft,35
+plastic_vuurwerk,Firework,PO hard,43.1
+plastic_borden_new,Plate,Polystyrene,22.1
+plastic_roerstaafjes_new,Mixing stick,Polystyrene,22.2
+plastic_bloempotten_new,Plant pot,PO hard,38.1
+plastic_plakband_new,Tape,PO soft,39.1
+rubber_ballonnen,Balloon,No plastic,49
+rubber_banden,Tire,No plastic,52
+rubber_overig_rubber,Other rubber,No plastic,53
+textiel_kleding,Clothing,No plastic,54
+textiel_vloerbedekking,Carpet,No plastic,55
+textiel_schoeisel,Shoeware,No plastic,57
+textiel_overig_textiel,Other textile,No plastic,59
+papier_tassen,Paper bag,No plastic,60
+papier_karton,Carton,No plastic,61
+papier_sigarettenverpakking,Cigarette pack,No plastic,63
+papier_sigarettenfilters,Cigarette filter,No plastic,64
+papier_kartonnen_bekers,Carton cup,No plastic,65
+papier_kranten,Newspaper,No plastic,66
+papier_papier_overig,Other paper,No plastic,67
+papier_drankkarton,Drink carton,No plastic,62.1
+papier_ondefinieerbaar,Other paper,No plastic,67.1
+hout_kurk,Cork,No plastic,68
+hout_pellets,Pellet,No plastic,69
+hout_ijsstokjes,Stick,No plastic,72
+hout_kwasten,Paintbrush,No plastic,73
+hout_overig_hout_keinderdan_50cm,Other wood (< 50 cm),No plastic,74
+hout_overig_hout_groterdan_50cm,Other wood (>= 50 cm),No plastic,75
+metaal_aluminiumfolie,Aluminium foil,No plastic,81
+metaal_capsules,Metal capsule,No plastic,81.1
+metaal_drankblikjes,Drink can,No plastic,78
+metaal_elektriciteitsdraad,Electrical wire,No plastic,79
+metaal_oud_ijzer,Iron part,No plastic,83
+metaal_kroonkurken,Metal bottle cap,No plastic,77
+metaal_oliedrum,Oil drum,No plastic,84
+metaal_omheinigsdraad_prikkeldraad,Barbed wire,No plastic,88
+metaal_spuitbussen,Spray can,No plastic,76
+metaal_verfblik,Paint can,No plastic,86
+metaal_vislood,Fish lead,No plastic,80
+metaal_voedselblikken,Food can,No plastic,82
+metaal_wegwerpbarbecues,Single use grill,No plastic,120
+metaal_overig_metaal_kleinerdan_50cm,Other metal (< 50 cm),No plastic,89
+metaal_overig_metaal_groterdan_50cm,Other metal (>= 50 cm),No plastic,90
+glas_flessen_pottten,Pot,No plastic,91
+glas_lampen_tl_lampen,Tube lamp,No plastic,92
+glas_overig_glas,Other glass,No plastic,93
+sanitair_cosmetica,Cosmetics,No plastic,7
+sanitair_plastic_wattenstaafjes,Cotton swab,PO hard,98
+sanitair_kartonnen_wattenstaafjes,Carton cotton swab,No plastic,982
+sanitair_vochtige_doekjes,Wet tissue,No plastic,102.2
+sanitair_condooms,Condom,No plastic,97
+sanitair_maandverband_en_verpakkingen_ervan,Sanitary towel,No plastic,99
+sanitair_plastic_kam_borstel,Hair brush,PO hard,18
+sanitair_tampons_en_tamponapplicators,Tampon (applicator),No plastic,100
+sanitair_tissues_wc_papier,Toilet paper,No plastic,102.3
+sanitair_toiletverfrissers,Toilet refresher,PO hard,101
+sanitair_overig_sanitair,Other sanitary,No plastic,102
+medisch_verpakkingen,Medical packaging,Multilayer,103
+medisch_spuiten,Syringe,No plastic,104
+medisch_overig_medisch,Other medical,No plastic,105
+granulaat_korrels,Nurdle,Other plastic,1.172
