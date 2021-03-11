@@ -1,0 +1,115 @@
+OSPAR-ID,Type-Code,Name,J-Code,G-Code,OSPAR Name
+108,ch_nn_lig_pfwa_,paraffin wax,,G213,Paraffin or wax pieces
+111,ch_nn_uch_,unidentified chemicals,J218,,Other pollutants
+54,ct_cl_clg_,clothing,J137,G137,Clothing
+57,ct_cl_ftw_,shoes & sandals made of leather and/or textile,J138,G138,Shoes (leather)
+55,ct_nn_cpt_,cloth textile carpet & furnishing,J141,G141,Furnishing
+56,ct_nn_sac_,hessian sacks/packaging,J140,G140,Sacking
+59,ct_nn_tex_,other textiles,J145,G145,Other textiles
+94,gc_co_btc_,"glass ceramic construction materials (bricks, tiles, cement)",J204,G204,Construction material e.g. tiles
+95,gc_fi_trp_octo_,ceramic or glass octopus pots,J207,G207,Octopus pots
+91,gc_nn_b&c_bott_,glass bottles,J200,G200,Bottles
+92,gc_nn_lit_,glass light bulbs and fluorescent light tubes,,,Light bulbs/tubes
+96,gc_nn_occ_ocet_,other ceramic items,J219,,Other ceramic/pottery items
+93,gc_nn_occ_ogli_,other glass items,J210,G210,Other glass items (please specify in other item box*)
+78,me_fc_b&c_cans_bevg_,metal drinks cans,J175,G175,Drink cans
+82,me_fc_b&c_cans_fcan_,metal food cans,J176,G176,Food cans
+87,me_fi_trp_,metal lobster/crab pots,J184,G184,Lobster/crab pots and tops
+80,me_fi_wsl_,"metal fisheries related weights/sinkers, and lures",J182,G182,Fishing weights
+79,me_nn_app_,"metal appliances (refrigerators, washers, etc.)",J180,G180,Electric appliances
+84,me_nn_b&c_barl_,metal drums & barrels,,G187,Oil drums
+76,me_nn_b&c_cans_aesp_,metal aerosol/spray cans ,J174,G174,Aerosol/Spray cans
+86,me_nn_b&c_cans_ptin_,metal paint tins,J190,G190,Paint tins
+77,me_nn_b&c_lids_,"metal bottle caps, lids & pull tabs from cans",J178,G178,Bottle caps
+81,me_nn_foi_,"metal foil wrappers, aluminium foil",J177,G177,Foil wrappers
+90,me_nn_ome_larg_,other metal pieces > 50cm,J199,G199,Other metal pieces > 50 cm
+89,me_nn_ome_smal_,other metal pieces 2.5cm  ≥ ≤  50cm,J198,G198,Other metal pieces < 50 cm
+83,me_nn_srp_,metal industrial scrap,J186,G186,Industrial scrap
+88,me_nn_wir_,"wire, wire mesh, barbed wire",J191,G191,"Wire, wire mesh, barbed wire"
+120,me_re_bbq_,metal disposable BBQs,J179,G179,Disposable BBQ’s
+29,pl_aq_shf_oyst_,plastic oyster trays ,J46,G46,Oyster trays (round from oyster cultures)
+28,pl_aq_shf_sack_,"plastic mussels/oyster mesh bags, net sack, socks",J45,G45,Oyster nets or mussel bags including plastic stoppers
+30,pl_aq_shf_tahi_,plastic sheeting from mussel culture (Tahitians),J47,G47,Plastic sheeting from mussel culture (Tahitians)
+44,pl_cl_ftw_,footwear made of plastic materials,,G71,Shoes/sandals
+25,pl_cl_glv_hogl_,"plastic gloves (household/dishwashing, gardening)",J40,G40,Gloves (typical washing up gloves)
+113,pl_cl_glv_ingl_,plastic gloves (industrial/professional applications),J41,G41,Gloves (industrial/professional rubber gloves)
+42,pl_cl_hdw_helm_,plastic hard hats/helmets,J69,G69,Hard hats
+6,pl_fc_b&c_,plastic food bottles & containers,,G10,Food containers incl. fast food containers
+4,pl_fc_b&c_dbot_,plastic drink bottles,,,"Drinks (bottles, containers and drums)"
+21,pl_fc_tab_cups_,plastic cups and cup lids,,G33,Cups
+22,pl_fc_tab_cupt_,"plastic cutlery, plates and trays",,G34,Cutlery/trays/straws
+19,pl_fc_wrp_cwls_,plastic crisps packets/sweets wrappers/lolly & lollypop sticks,,,Crisp/sweet packets and lolly sticks
+34,pl_fi_box_,plastic fish boxes,,,Fish boxes
+36,pl_fi_fil_,plastic fishing light sticks / fishing glow sticks incl. packaging,J60,G60,Light sticks (tubes with fluid)
+35,pl_fi_lin_,plastic fishing line,J59,G59,Fishing line (angling)
+116,pl_fi_net_larg_,plastic nets and pieces of net > 50cm,J54,G54,Nets and pieces of net > 50 cm
+115,pl_fi_net_smal_,plastic nets and pieces of net 2.5 cm  ≥ ≤  50 cm,J53,G53,Nets and pieces of net < 50 cm
+33,pl_fi_net_tang_,plastic tangled nets/cord,,G56,Tangled nets/cord/rope and string
+26,pl_fi_trp_crab_,plastic crab/lobster traps (pots) and tops,J42,G42,Crab/lobster pots
+27,pl_fi_trp_octo_,plastic octopus pots,J44,G44,Octopus pots
+43,pl_hu_car_,plastic shotgun cartridges,J70,G70,Shotgun cartridges
+7,pl_hy_b&c_,plastic personal hygiene and care related bottles & containers,,,"Cosmetics (bottles & containers  e.g. sun lotion,         shampoo, shower gel, deodorant)"
+98,pl_hy_cbs_,plastic cotton bud sticks,J95,G95,Cotton bud sticks
+18,pl_hy_com_,plastic combs/hair brushes/sunglasses,J29,G29,Combs/hair brushes
+102,pl_hy_ohy_,other plastic personal hygiene and care items,J236,,Other sanitary items
+99,pl_hy_stt_sant_,plastic sanitary towels/panty liners/backing strips,J96,G96,Sanitary towels/panty liners/backing strips
+100,pl_hy_stt_tamp_,plastic tampons and tampon applicators,J144,G144,Tampons and tampon applicators
+101,pl_hy_tfr_,plastic toilet fresheners,J97,G97,Toilet fresheners
+105,pl_md_omd_,"other plastic medical items (swabs, bandaging, adhesive plasters etc.) ",J211,G211,"Other medical items (swabs, bandaging etc.)"
+103,pl_md_pha_,plastic medical/ pharmaceuticals containers/tubes/ packaging,J100,G100,Containers / tubes
+104,pl_md_syg_,plastic syringes/needles,J99,G99,Syringes
+5,pl_nn_b&c_clng_,plastic bottles and containers of cleaning products,J9,G9,"Cleaner (bottles, containers and drums)"
+9,pl_nn_b&c_eoil_larg_,plastic engine oil bottles & containers >50cm,J15,G15,Engine oil containers and drums > 50 cm
+8,pl_nn_b&c_eoil_smal_,plastic engine oil bottles & containers 2.5 cm  ≥ ≤  50 cm,J14,G14,Engine oil containers and drums <50 cm
+11,pl_nn_b&c_injn_,plastic injection gun containers/cartridges,J17,G17,Injection gun containers
+10,pl_nn_b&c_jery_,plastic jerry cans ,J16,G16,Jerry cans (square plastic containers with handle)
+15,pl_nn_b&c_lids_,plastic caps and lids,,G20,Caps/lids
+12,pl_nn_b&c_ob&c_,other plastic bottles & containers (drums),J13,G13,"Other bottles, containers and drums"
+2,pl_nn_bag_cabg_,plastic shopping/carrier/grocery bags ,J3,G3,Bags (e.g. shopping)
+121,pl_nn_bag_dogb_,plastic dog/pet faeces bag,J101,G101,Bagged dog faeces
+112,pl_nn_bag_ends_,the part that remains from tear-off plastic bags,J5,G5,Plastic bag ends
+23,pl_nn_bag_hdsa_,plastic heavy-duty sacks,,,Fertiliser/animal feed bags
+24,pl_nn_bag_mesh_,plastic mesh bags,,G37,Mesh vegetable bags
+3,pl_nn_bag_smbg_,small plastic bags ,J4,G4,"Small plastic bags, e.g., freezer bags"
+13,pl_nn_box_,"plastic crates, boxes, baskets",J18,G18,Crates
+38,pl_nn_buc_,plastic buckets,J65,G65,Buckets
+40,pl_nn_cpa_shet_,"plastic sheets, industrial packaging, sheeting",J67,G67,"Industrial packaging, plastic sheeting"
+41,pl_nn_fib_,fibre glass items,J68,G68,Fibre glass
+37,pl_nn_flb_,plastic floats/buoys other source than fishing or not known,J63,G63,Floats/Buoys
+45,pl_nn_fom_,foamed plastic items and fragments not made of foamed polystyrene,,G73,Foam sponge
+47,pl_nn_frg_larg_,fragments of foamed and non-foamed plastic material > 50 cm,,G77,Plastic/polystyrene pieces > 50 cm
+46,pl_nn_frg_smal_,fragments of foamed and non-foamed plastic material 2.5cm  ≥ ≤  50cm,,G76,"Plastic/polystyrene pieces  2,5 cm > < 50 cm"
+48,pl_nn_idp_,other hard plastic or foamed polystyrene items (identifiable),,G124,Other plastic/polystyrene items
+73,pl_nn_pai_,plastic paint brushes,J166,G166,Paint brushes
+17,pl_nn_pen_,plastic pens and pen lids,J28,G28,Pens
+31,pl_nn_rps_rope_,plastic rope (diameter more than 1cm),J49,G49,Rope (diameter more than 1 cm)
+32,pl_nn_rps_strg_,plastic string and cord (diameter less than 1cm),,G50,String and cord (diameter less than 1 cm)
+39,pl_nn_stb_,plastic strapping bands,J66,G66,Strapping bands
+1,pl_nn_sxp_,plastic 4/6-pack yokes & six-pack rings,J1,G1,4/6-pack yokes
+114,pl_nn_tag_,plastic tags (fishing and industry),J43,G43,Lobster and fish tags
+20,pl_re_toy_,plastic toys and party poppers,J32,G32,Toys & party poppers
+64,pl_sm_but_,tobacco products with filters (cigarette butts with filters),J27,G27,Cigarette butts
+16,pl_sm_lht_,plastic cigarette lighters,J26,G26,Cigarette lighters
+14,pl_vk_prt_,plastic vehicle parts,J19,G19,Car parts
+118,pp_fc_b&c_tpak_milk_,paper cartons/Tetrapak milk,J150,G150,Cartons e.g. tetrapak (milk)
+62,pp_fc_b&c_tpak_otpk_,paper cartons/Tetrapak (non-milk),J151,G151,Cartons e.g. tetrapak (other)
+65,pp_fc_tab_cups_,paper cups,J244,,Cups
+60,pp_nn_bag_,paper bags,J147,G147,Bags
+61,pp_nn_box_,cardboard boxes,J148,G148,Cardboard
+66,pp_nn_new_,paper newspapers & magazines,J154,G154,Newspapers & magazines
+67,pp_nn_opp_,other paper items,J158,G158,Other paper items
+63,pp_sm_cig_,paper cigarette packets,J152,G152,Cigarette packets
+50,ru_cl_ftw_rubo_,rubber boots,J127,G127,Boots
+97,ru_hy_con_,rubber condoms (incl. packaging),J133,G133,Condoms
+53,ru_nn_oru_,other rubber pieces,J134,G134,Other rubber pieces
+49,ru_re_bln_,rubber balloons,J125,G125,"Balloons, including plastic valves, ribbons, strings etc."
+52,ru_vk_tyr_,rubber tyres & belts,,G128,Tyres and belts
+68,wo_fc_b&c_cork_,wooden corks,J159,G159,Corks
+72,wo_fc_ice_,"wooden ice-cream sticks, chip forks, chopsticks, toothpicks",J165,G165,Ice lolly sticks / chip forks
+119,wo_fi_box_,wooden fish boxes,J164,G164,Fish boxes
+71,wo_fi_trp_,wooden crab/lobster pots,J163,G163,Crab/lobster pots
+70,wo_nn_box_,"wooden crates, boxes, baskets for packaging",J162,G162,Crates
+75,wo_nn_owo_larg_,other processed wooden items > 50cm,J172,G172,Other wood  > 50 cm
+74,wo_nn_owo_smal_,other processed wooden items 2.5 cm ≥ ≤ 50 cm,J171,G171,Other wood  < 50 cm
+69,wo_nn_pal_,wooden pallets,J160,G160,Pallets+A90A81:A1:F114
+117,,MESOPLASTIK,,,"Plastic/polystyrene pieces 0 - 2,5 cm"
