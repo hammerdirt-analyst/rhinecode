@@ -9,3 +9,7 @@
 #### initial harmonized results:
 
 ![initial scatterplot](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/harmonized_results/initial_harmonized_results.jpg)
+
+#### initial top ten results:
+
+![initial top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/harmonized_results/initial_topten_results.jpg)
