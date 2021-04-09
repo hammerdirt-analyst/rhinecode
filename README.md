@@ -13,8 +13,8 @@ In this study, we provide the first international comparison of macrolitter poll
 ![initial scatterplot](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/harmonized_results/initial_harmonized_results.jpg)
 
 #### initial top ten results:
-![combined top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/setup_class_methods/combined_top_ten.jpg)
+![combined top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/setup_class_methods/combined_swiss_vs_dutch.jpg)
 
-![initial top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/harmonized_results/initial_topten_results.jpg)
+
 
 ![initial top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/harmonized_results/initial_topten_results_agg.jpg)
