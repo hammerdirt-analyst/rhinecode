@@ -8,13 +8,9 @@ In this study, we provide the first international comparison of macrolitter poll
 
 **harmonizesurveyresults**: the preprocessing of survey results so that the results from both projecs are in the same format
 
-#### initial harmonized results:
+#### initial harmonized results: Top ten objects Swiss versus Dutch rivers:
 
-![initial scatterplot](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/harmonized_results/initial_harmonized_results.jpg)
+![initial scatterplot](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/setup_class_methods/combined_swiss_vs_dutch.jpg)
 
-#### initial top ten results:
-![combined top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/setup_class_methods/combined_swiss_vs_dutch.jpg)
-
-
-
-![initial top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/harmonized_results/initial_topten_results_agg.jpg)
+#### Combined top ten results all water features % of total:
+![combined top ten](https://github.com/hammerdirt-analyst/rhinecode/blob/main/output/setup_class_methods/top_ten_percent_feature.jpg)
