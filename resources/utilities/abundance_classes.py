@@ -1,5 +1,6 @@
 import pandas as pd
 # import utility_functions as ut
+# import utilities.utility_functions
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -12,19 +13,30 @@ from matplotlib.colors import ListedColormap, LinearSegmentedColormap, Colormap
 import numpy as np
 
 
+
+
 class PreprocessData:
     """preprocesses data"""
-    def __init__(self, data, beaches, these_cols=[], **kwargs):
+    def __init__(self, data, beaches, these_cols=['loc_date', 'location', 'water_name_slug','type', 'date'], foams={'G82':['G82', 'G912'], 'G81':['G81', 'G911'], 'G74':['G74', 'G910', 'G909']}, **kwargs):
         self.data = data
         self.these_cols=these_cols
-        # self.foams=foams
+        self.foams=foams        
         self.beaches = beaches
-        # self.code_maps = self.make_code_maps(self.data, self.these_cols, self.foams)
+        self.levels = kwargs['levels']
+        self.exp_variables = kwargs['exp_variables']
+        self.locations_in_use = data.location.unique()
+        self.river_bassins = kwargs['river_bassins']
+        self.code_maps = self.make_code_maps(self.data, self.these_cols, self.foams)
+        self.codes_in_use = data.code.unique()
+        self.group_names_locations = kwargs['code_group_data']
+        self.code_groups = self.make_code_groups()
+        self.code_group_map = self.make_group_map(self.code_groups)
         self.processed = self.add_exp_group_pop_locdate()
-        self.daily_totals_all = data.groupby(these_cols, as_index=False).agg({'pcs_m':'sum', 'quantity':'sum'})
+        self.survey_data = self.assign_code_groups_to_results(self.processed, self.code_group_map)
+        self.daily_totals_all = self.survey_total_pcsm_q()
         self.median_daily_total = self.daily_totals_all.pcs_m.median()
-        self.code_totals = self.data.groupby('code').quantity.sum()
-        self.code_pcsm_med = self.data.groupby('code').pcs_m.median()
+        self.code_totals = self.survey_data.groupby('code').quantity.sum()
+        self.code_pcsm_med = self.survey_data.groupby('code').pcs_m.median()
         
     def make_code_maps(self, data, these_cols, these_codes):
         wiw = {}
@@ -32,7 +44,7 @@ class PreprocessData:
             a_map = data[data.code.isin(these_codes[code])].groupby(these_cols, as_index=False).agg({'pcs_m':'sum', 'quantity':'sum'})
             a_map['code']=code
             wiw.update({code:a_map})
-        print("code maps done")
+        # print("code maps done")
         return wiw
     def agg_foams(self):
         accounted = [v for k,v in self.foams.items()]
@@ -40,17 +52,170 @@ class PreprocessData:
         remove_foam = self.data[~self.data.code.isin(accounted)].copy()
         foam = [v for k,v in self.code_maps.items()]        
         newdf = pd.concat([remove_foam, *foam])
-        print("agg foams complet")
+        # print("agg foams complet")
         return newdf
     def add_exp_group_pop_locdate(self):
-        anewdf = self.data
+        anewdf = self.agg_foams()
         anewdf['groupname'] = 'groupname'
-        # for beach in anewdf.location.unique():
-        #     anewdf.loc[anewdf.location==beach, 'population'] = self.beaches.loc[beach].population
+        for beach in anewdf.location.unique():
+            for variable in self.exp_variables:
+                anewdf.loc[anewdf.location==beach, variable] = self.beaches.loc[beach][variable]
         anewdf['string_date'] = anewdf.date.dt.strftime('%Y-%m-%d')
         anewdf['loc_date'] = list(zip(anewdf.location, anewdf.string_date))
-        print("added exp vs")
+        this_df = self.assign_regional_labels_to_data(anewdf)
+
+        # print("added exp vs")
+        return this_df
+
+    def make_code_groups(self):
+        these_groups ={k:ut.json_file_get(F"output/code_groups/{v}") for k,v in self.group_names_locations.items()}
+        accounted = [v for k,v in these_groups.items()]
+        accounted = [item for a_list in accounted for item in a_list]
+        the_rest = [x for x in self.codes_in_use if x not in accounted]
+        these_groups.update({'not classified':the_rest})
+        # print('made code groups')
+        return these_groups
+    def make_group_map(self,a_dict_of_lists):
+        wiw = {}
+        for group in a_dict_of_lists:
+            keys = a_dict_of_lists[group]
+            a_dict = {x:group for x in keys}
+            wiw.update(**a_dict)
+        # print('making group map')
+        return wiw
+    def assign_code_groups_to_results(self, data, code_group_map):
+        data = data.copy()
+        for code in data.code.unique():
+            # print(code)
+            data.loc[data.code==code, 'groupname'] = code_group_map[code]
+        # print('assigned results to code groups')
+        return data
+    def tag_regional_label(self,x, beaches):
+        try:
+            a_label = beaches[x]
+        except:
+            a_label = "no data"
+        return a_label
+    def assign_regional_labels_to_data(self, data):
+        data = data.copy()
+        for k,v in self.river_bassins.items():
+            data.loc[data.water_name_slug.isin(v), 'river_bassin'] = k
+        for beach in self.locations_in_use:
+            data.loc[data.location == beach, 'city'] = self.beaches.loc[beach].city
+
+        # print('assigned regional labels')
+        return data
+    def survey_total_pcsm_q(self):
+        anewdf = self.survey_data.groupby(self.these_cols, as_index=False).agg({'pcs_m': 'sum', 'quantity': 'sum'})
+        anewdf['string_date'] = anewdf.date.dt.strftime('%Y-%m-%d')
+        anewdf['loc_date'] = list(zip(anewdf.location, anewdf.string_date))
+
         return anewdf
+# connvenience methods for notebooks using the abundance class
+
+# collect data
+def get_the_file_extension(x):
+    split = x.split('.')[-1]
+    return split
+
+def get_data_from_most_recent(data_sources, check_ext=get_the_file_extension, data_methods={},
+                                a_dir="resources/most_recent"):
+    """Retrieves files from specified directories using specified methods
+
+    Checks the extension of the requested file and applies the the requested method.
+
+    Args:
+      data: dict
+      check_ext: dict of methods for each file extension
+      data_methods: methods to handle data sources
+
+    Returns:
+      The requested data stored in an array
+    """
+    a_list = []
+    for key in data_sources:
+      ext = check_ext(data_sources[key])
+      method = data_methods[ext]
+      my_file = method(F"{a_dir}/{data_sources[key]}")
+      a_list.append(my_file)
+
+    return a_list
+
+def fo_rmat_date_column(x, a_format="%Y-%m-%d"):
+    # takes in a a data frame and converts the date column to timestamp
+    x['date'] = pd.to_datetime(x['date'], format=a_format)
+    return x.copy()
+
+def slic_eby_date(x, start_date, end_date):
+    # slices a data frame by the start and end date inclusive
+    return x[(x.date >= start_date) & (x.date <= end_date)].copy()
+
+def fo_rmat_and_slice_date(x, a_format="", start_date="", end_date=""):
+    # formats the date column and slices the data frame by the start and end date
+    new_df = fo_rmat_date_column(x, a_format=a_format)
+    new_df = slic_eby_date(new_df, start_date, end_date)
+    return new_df
+
+def add_a_grouping_column(x, a_dict, column_to_match="", new_column_name='river_bassin'):
+    # maps values of the column to the dict and creates a new column
+    # called new column name
+    for k, v in a_dict.items():
+        x.loc[x[column_to_match].isin(v), new_column_name] = k
+    return x
+
+
+def add_national_column(x, col_name="", group="", agg_cols={}):
+    add_me = x.groupby(group).agg(agg_cols)
+    add_me[col_name] = add_me.fail / add_me.loc_date
+    return add_me[col_name]
+
+
+def agg_fail_rate_by_city_feature_basin_all(som_data, levels, group='code',
+                                            agg_cols={'loc_date': 'nunique', 'fail': 'sum'}, national=True,
+                                            col_name="All river bassins"):
+    new_dfs = []
+    for level in levels:
+        a_newdf = som_data[som_data[level] == levels[level]].groupby(group).agg(agg_cols)
+        a_newdf[levels[level]] = a_newdf.fail / a_newdf.loc_date
+        new_dfs.append(a_newdf[levels[level]])
+    if national:
+        national = add_national_column(som_data, col_name=col_name, group=group, agg_cols=agg_cols)
+        new_dfs.append(national)
+    return pd.concat(new_dfs, axis=1)
+
+def agg_pcs_m_by_city_feature_basin_all(som_data, levels, group='code', agg_cols={"pcs_m":"median"}, level_names=[], dailycols={'pcs_m':'sum', 'quantity':'sum'}, national=True,  col_name="All river bassins", daily=False, **kwargs):
+    new_dfs = []
+    i = 0
+    for level in levels:
+
+        if daily == True:
+            a_newdf = som_data[som_data[level] == levels[level]].groupby(['loc_date',group]).agg(dailycols)
+            a_newdf = a_newdf.groupby([group]).agg(agg_cols)
+            level_name = level_names[i]
+            a_newdf[level_name] = a_newdf[list(agg_cols.keys())[0]]
+            i+=1
+        else:
+
+            a_newdf = som_data[som_data[level] == levels[level]].groupby([group]).agg(agg_cols)
+            level_name = level_names[i]
+            a_newdf[level_name] = a_newdf[list(agg_cols.keys())[0]]
+            i+=1
+
+        new_dfs.append(a_newdf[level_name])
+    if national and daily:
+        national_data = som_data.groupby(['loc_date', group]).agg(dailycols)
+        national_data = national_data.groupby(group).agg(agg_cols)
+        national_data[col_name] = national_data[list(agg_cols.keys())[0]]
+        new_dfs.append(national_data[col_name])
+    elif national and  not daily:
+        a_newdf = som_data.groupby([group]).agg(agg_cols)
+        a_newdf[col_name] = a_newdf[list(agg_cols.keys())[0]]
+        new_dfs.append(a_newdf[col_name])
+
+
+    this_df = pd.concat(new_dfs, axis=1)
+
+    return this_df
 
 class CatchmentArea:
     """aggregates survey results"""
@@ -63,68 +228,27 @@ class CatchmentArea:
         self.beaches = these_beaches
         self.start_date = kwargs['start_date']
         self.end_date = kwargs['end_date']
-        # self.levels = kwargs['levels']
-        # self.catchment = self.levels['catchment']
-        # self.muni = self.levels['muni']
+        self.levels = kwargs['levels']
+        self.catchment = kwargs['catchment_name']
         self.locations_in_use = self.data.location.unique()
-        # self.muni_beaches = self.get_locations_by_region(self.locations_in_use, self.beaches[self.beaches.city == self.muni].index)
-        # self.catchment_features = kwargs['catchment_features']
-        self.bassin_beaches = self.get_locations_by_region(self.locations_in_use, self.locations_in_use)
+        self.catchment_features = kwargs['catchment_features']
+        self.bassin_beaches = self.get_locations_by_region(self.locations_in_use, self.beaches[self.beaches.water_name.isin(self.catchment_features)].index)        
         self.codes_in_use = data.code.unique()
-        # self.group_names_locations = kwargs['code_group_data']
-        # self.new_code_group = kwargs['new_code_group']
-        # self.code_groups = self.make_code_groups()
-        # self.code_group_map = self.make_group_map(self.code_groups)
-        self.bassin_data = self.data
-        # self.muni_data = self.assign_regional_labels_to_data(self.assign_code_groups_to_results(data[data.location.isin(self.muni_beaches)].copy(), self.code_group_map), self.levels, these_beaches)
+        self.bassin_data = self.assign_regional_labels_to_data(data[data.location.isin(self.bassin_beaches)].copy(), self.levels, these_beaches)
         self.bassin_code_totals = self.code_totals_regional(self.bassin_data)
-        # self.muni_code_totals = self.code_totals_regional(self.muni_data)
         self.bassin_code_pcsm_med = self.bassin_data.groupby('code').pcs_m.median()
-        # self.muni_code_pcsm_med = self.muni_data.groupby('code').pcs_m.median()
         self.bassin_pcsm_day = self.bassin_data.groupby(kwargs['catchment_cols'], as_index=False).agg({'pcs_m':'sum', 'quantity':'sum'})
-        # self.muni_pcsm_day = self.muni_data.groupby(kwargs['catchment_cols'], as_index=False).agg({'pcs_m':'sum', 'quantity':'sum'})
+        
            
-    def make_group_map(self,a_dict_of_lists):
-        wiw = {}
-        for group in a_dict_of_lists:
-            keys = a_dict_of_lists[group]
-            a_dict = {x:group for x in keys}
-            wiw.update(**a_dict)
-        print('making group map')
-        return wiw
     
-    def make_code_groups(self):
-        these_groups ={k:ut.json_file_get(F"output/code_groups/{v}") for k,v in self.group_names_locations.items()}
-        these_groups.update(self.new_code_group)
-        accounted = [v for k,v in these_groups.items()]
-        accounted = [item for a_list in accounted for item in a_list]
-        the_rest = [x for x in self.codes_in_use if x not in accounted]
-        these_groups.update({'the rest':the_rest})
-        print('made code groups')
-        return these_groups
-    
-    def assign_code_groups_to_results(self, data, code_group_map):
-        data = data.copy()
-        for code in data.code.unique():
-            data.loc[data.code==code, 'groupname'] = code_group_map[code]
-        print('assigned results to code groups')
-        return data
-    
-    def tag_regional_label(self,x, levels):
-        if x in self.muni_beaches:
-            a_label = self.muni
-        else:
-            a_label = self.catchment
+    def tag_regional_label(self,x, beaches):
+        try:
+            a_label = beaches[x]
+        except:
+            a_label = "no data"
         return a_label
     
-    def assign_regional_labels_to_data(self, data, levels, these_beaches):
-        data = data.copy()
-        for beach in data.location.unique():
-            pass
-            # data.loc[data.location==beach, 'region'] = self.tag_regional_label(beach, levels)
-            # data.loc[data.location==beach, 'city'] = these_beaches.loc[beach]['city']
-        print('assigned regional labels')
-        return data
+
     
     def code_totals_regional(self, data):
         data = data.groupby('code', as_index=False).quantity.sum()
@@ -136,7 +260,49 @@ class CatchmentArea:
     def get_locations_by_region(self, locations_in_use, locations_of_interest):        
         return [x for x in locations_of_interest if x in locations_in_use]
 
-    
+    def assign_regional_labels_to_data(self, data, levels, these_beaches):
+        data = data.copy()
+        for a_level in levels:
+            this_key = these_beaches[a_level]
+            data.loc[data.location.isin(this_key.index), a_level] = self.tag_regional_label(this_key.index[0], this_key)
+
+        print('assigned regional labels')
+        return data
+
+
+def make_a_group_summary(adf, groups={}, aggs={}):
+    som_data = adf.groupby(groups['columns'], as_index=False).agg(aggs)
+    a_quantity = som_data.groupby(groups['quantity_level']).quantity.sum()
+    return som_data, a_quantity
+
+
+def calculate_rates(adf, feature_total_map=None, feature_map=None, groups=None, aggs=None, rates=None, products=None,
+                    methods=None):
+    fgs = adf.copy()
+    if groups != None:
+        fgs = adf.groupby(groups['columns'], as_index=False).agg(aggs)
+        a_list_of_features = adf[groups['quantity_level']].unique()
+        for this_feature in a_list_of_features:
+            fgs.loc[fgs[groups['quantity_level']] == this_feature, 'feature_total'] = feature_total_map(this_feature,
+                                                                                                        feature_map)
+    if rates:
+        for rate in rates:
+            fgs[rate['rate_name']] = fgs[rate['columns']['this']] / fgs[rate['columns']['over_that']]
+    if products:
+        for product in products:
+            fgs[product['rate_name']] = fgs[product['columns']['this']] * fgs[product['columns']['times_that']]
+
+    return fgs
+
+
+def make_heat_map_data(data, cols=[], columns=[], index=None, sort_values=None):
+    new_data = data[cols].pivot(index=index, columns=columns, values=cols[-1])
+    if sort_values != None:
+        new_data.sort_values(by=sort_values, inplace=True, ascending=False)
+    if isinstance(new_data.columns, pd.MultiIndex) == True:
+        new_data.columns = new_data.columns.get_level_values(1)
+
+    return new_data.astype(float)
     
 def makeTableOfKeyStatistics(ca_data_pcsm_day):
     a_sum = pd.DataFrame(ca_data_pcsm_day.pcs_m.describe()[1:].round(2)).T
